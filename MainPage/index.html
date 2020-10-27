@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="UI/styles.css">
+    <link rel="stylesheet" href="UI/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="header">
+        <span>
+            <i class="fa fa-book" aria-hidden="true"></i>
+            IghorChaikin
+        </span>
+        <button class="exit-button">Выйти</button>
+    </header>
+
+    <div class="main">
+        <div class="side-area">
+            <div class="side-header">Активные пользователи</div>
+            <div class="user-list">
+                <button class="user-point">User1</button>
+                <button class="user-point">IgorChaikin</button>
+                <button class="user-point">Some user</button>
+                <button class="user-point">Ivan Ivanon</button>
+                <button class="user-point">No Name</button>
+                <button class="user-point">Julia</button>
+            </div>
+        </div>
+        <div class="center-area">
+            <div class="load-area">
+                <button type="button" class="sup-button">
+                    Загрузить ещё
+                </button>
+            </div>
+            <div class="message-list">
+                <div class="out-message-body">
+                    <h6 class="message-header">
+                        IgorChaikin
+                    </h6>
+                    <article class="message-text">
+                        Sed ut perspiciatis, unde omnis
+                    </article>
+                    <button class="redact-button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <button class="delete-button"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    <p class="date-text">22.10.2020 14:00</p>
+                </div>
+
+                <div class="out-personal-message-body">
+                    <h6 class="message-header">
+                        IgorChaikin
+                    </h6>
+                    <article class="message-text">
+                        <span class="out-appeal">User1,</span>
+                        S
+                    </article>
+                    <button class="redact-button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <button class="delete-button"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    <p class="date-text">22.10.2020 14:00</p>
+                </div>
+
+                <div class="in-message-body">
+                    <h6 class="message-header">
+                        Some user
+                    </h6>
+                    <article class="message-text">
+                        Sed ut perspiciatis, unde omnis
+                    </article>
+                    <p class="date-text">22.10.2020 14:00</p>
+                </div>
+
+                <div class="in-message-body">
+                    <h6 class="message-header">
+                        Some user
+                    </h6>
+                    <article class="message-text">
+                        Sed ut perspiciatis, unde omnis
+                    </article>
+                    <p class="date-text">22.10.2020 14:00</p>
+                </div>
+
+                <div class="in-message-body">
+                    <h6 class="message-header">
+                        Some user
+                    </h6>
+                    <article class="message-text">
+                        Sed ut perspiciatis, unde omnis
+                    </article>
+                    <p class="date-text">22.10.2020 14:00</p>
+                </div>
+
+                <div class="in-message-body">
+                    <h6 class="message-header">
+                        Some user
+                    </h6>
+                    <article class="message-text">
+                        Sed ut perspiciatis, unde omnis
+                    </article>
+                    <p class="date-text">22.10.2020 14:00</p>
+                </div>
+
+                <div class="in-personal-message-body">
+                    <h6 class="message-header">
+                        Some user
+                    </h6>
+                    <article class="message-text">
+                        <span class="in-appeal">IgorChaikin,</span>
+                        S
+                    </article>
+                    <p class="date-text">22.10.2020 14:00</p>
+                </div>
+
+                <div class="in-message-body">
+                    <h6 class="message-header">
+                        Some user
+                    </h6>
+                    <article class="message-text">
+                        Sed ut perspiciatis, unde omnis
+                    </article>
+                    <p class="date-text">22.10.2020 14:00</p>
+                </div>
+
+                <div class="in-message-body">
+                    <h6 class="message-header">
+                        Some user
+                    </h6>
+                    <article class="message-text">
+                        S
+                    </article>
+                    <p class="date-text">22.10.2020 14:00</p>
+                </div>
+
+                <div class="in-message-body">
+                    <h6 class="message-header">
+                        Some user
+                    </h6>
+                    <article class="message-text">
+                        Sed ut perspiciatis, unde omnis
+                    </article>
+                    <p class="date-text">22.10.2020 14:00</p>
+                </div>
+
+            </div>
+
+            <form class="send-form">
+                <input class="send-field">
+                <button type="button" class="send-button">
+                    Отправить
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+        <div class="side-area">
+            <div class="side-header">Фильтровать сообщения по</div>
+            <div class="filters-grid">
+                <label class="name-label" for="name">Автору</label>
+                    <input type="text" id="name" class="name-field">
+                <label class="date-label" for="date">Дате</label>
+                    <input type="date" id="date" class="date-field">
+                <label class="content-label" for="content">Содержанию</label>
+                    <input type="text" id="content" class="content-field">
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <span class="message-header">StudentChat</span>
+        <span class="info-container">
+            <div class="info">
+                <div class="message-header">Автор</div>
+                <div class="message-text">Игорь Чайкин</div>
+            </div>
+            <div class="info">
+                <div class="message-header">Контакты</div>
+                <div class="message-text">ighor.chaikin@gmail.com</div>
+            </div>
+            <div class="info">
+                <div class="message-header">Дата измениния</div>
+                <div class="message-text">22.10.2020</div>
+            </div>
+        </span>
+    </footer>
+</body>
+<script type="text/javascript" src="scripts/example.js"></script>
+
+</html>
