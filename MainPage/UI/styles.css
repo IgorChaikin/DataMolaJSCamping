@@ -14,37 +14,51 @@
     --small-text : x-small sans-serif;
 }
 
+html{
+    height: 100%;
+}
 
-.main{
-    position: fixed;
-    top: 0;
-    left: 0;
+body{
+    padding: 0;
+    margin: 0;
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-rows: 5% 1fr 8%;
-    grid-template-columns: 20% 1fr 20%;
+    grid-template-rows: 5% 87% 8%;
+}
+
+.main{
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
     grid-gap: 0;
 }
 
 .header{
-    grid-column: 1 / 4;
-    grid-row: 1;
-    padding: 0.5% 0.5% 0.5% 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 1rem 0 1rem;
     background: linear-gradient(to top,var(--light-color) -10%,var(--green-color));
     color: var(--dark-color);
     font: var(--header);
 }
 
 .footer{
-    grid-column: 1 / 4;
-    grid-row: 3;
-    padding: 0.5% 0.5% 0.5% 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 1rem 0 1rem;
     background: linear-gradient(to top, var(--dark-color) 30%, var(--main-color));
     color: var(--white-color);
 }
 
 .center-area{
+    height: 100%;
+    overflow: hidden;
     position: relative;
     background: linear-gradient(to top, var(--light-color), var(--white-color));
     color: var(--dark-color);
@@ -64,16 +78,20 @@
     float: left;
     grid-row: 2;
     grid-column: 2 / 3;
-    border-radius: 500em;
+
+    padding: 0 0.5rem 0 0.5rem;
+    border-radius: 1rem;;
     resize: none;
     background: var(--white-color);
     border: none;
+    font: var(--text);
+    color: var(--dark-color);
 }
 
 .send-button{
     grid-row: 2;
     grid-column: 3 / 4;
-    border-radius: 500em;
+    border-radius: 1rem;;
     background: var(--green-color);
     color: var(--white-color);
     border: none;
@@ -85,7 +103,9 @@
 }
 
 .side-header{
-    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
     color: var(--white-color);
     font: var(--bold-header);
@@ -97,58 +117,70 @@
 .filters-grid{
     display: grid;
     height: 88%;
-    grid-template-rows: 0 2% 5% 2% 5% 2% 5% 2%;
-    grid-template-columns: 0 98% 0;
-    grid-row-gap: 10%;
-    grid-gap: 2%;
+    grid-template-rows: 0 2% 5% 2% 5% 2% 5%;
+    grid-template-columns: 0 90%;
+    grid-gap: 5%;
 }
 
 .name-label{
     grid-row: 2;
-    grid-column: 2 / 3;
+    grid-column: 2;
     color: var(--white-color);
     font: var(--text);
 }
 
 .name-field{
     grid-row: 3;
-    grid-column: 2 / 3;
-    border-radius: 500em;
+    grid-column: 2;
+    padding: 0 0.5rem 0 0.5rem;
+
+    border-radius: 1rem;
     resize: none;
     background: var(--white-color);
     border: none;
+    font: var(--text);
+    color: var(--dark-color);
 }
 
 .date-label{
     grid-row: 4;
-    grid-column: 2 / 3;
+    grid-column: 2;
     color: var(--white-color);
     font: var(--text);
 }
 
 .date-field{
     grid-row: 5;
-    grid-column: 2 / 3;
-    border-radius: 500em;
+    grid-column: 2;
+    padding: 0 0.5rem 0 0.5rem;
+
+    border-radius: 1rem;
     resize: none;
     background: var(--white-color);
     border: none;
+    font: var(--text);
+    color: var(--dark-color);
 }
 
 .content-label{
     grid-row: 6;
-    grid-column: 2 / 3;
+    grid-column: 2;
     color: var(--white-color);
     font: var(--text);
 }
 
 .content-field{
     grid-row: 7;
-    grid-column: 2 / 3;
-    border-radius: 500em;
+    grid-column: 2;
+    padding: 0 0.5rem 0 0.5rem;
+
+    border-radius: 1rem;
     resize: none;
     background: var(--white-color);
     border: none;
+
+    font: var(--text);
+    color: var(--dark-color);
 }
 
 .user-list{
@@ -168,14 +200,16 @@
 
 .load-area{
     height: 3%;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
     padding-top: 0.1rem;
 }
 
 .sup-button{
-    /*grid-row: 2;
-    grid-column: 3 / 4;*/
-    border-radius: 500em;
+    border-radius: 1rem;;
     background: var(--main-color);
     color: var(--white-color);
     border: none;
@@ -184,21 +218,23 @@
 
 .message-list{
     height: 90%;
-    overflow-y: auto;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    flex-basis: 90%;
+    flex-grow: 0;
 }
 
 .in-message-body{
     align-self: flex-start;
 
-    margin-left: 0.5%;
-    margin-top: 0.5%;
+    margin: 0.5% 50% 0 0.5%;
+
     height: max(8%, auto);
 
     padding: 0.2% 2% 0.2% 0.2%;
 
-    border-radius: 0 500em 500em 0;
+    border-radius: 0 2rem 2rem 0;
     background: var(--accent-color);
     color: var(--white-color);
 }
@@ -206,13 +242,13 @@
 .in-personal-message-body{
     align-self: flex-start;
 
-    margin-left: 0.5%;
-    margin-top: 0.5%;
+    margin: 0.5% 50% 0 0.5%;
+
     height: max(8%, auto);
 
     padding: 0.2% 2% 0.2% 0.2%;
 
-    border-radius: 0 500em 500em 0;
+    border-radius: 0 2rem 2rem 0;
     border: 2px solid var(--border-color);
     background: var(--accent-color);
     color: var(--white-color);
@@ -221,13 +257,13 @@
 .out-message-body{
     align-self: flex-end;
 
-    margin-top: 0.5%;
-    margin-right: 0.5%;
+    margin: 0.5% 0.5% 0 50%;
+
     height: max(8%, auto);
 
     padding: 0.2% 0.2% 0.2% 2%;
 
-    border-radius: 500em 0 0 500em;
+    border-radius: 2rem 0 0 2rem;
     background: var(--green-color);
     color: var(--white-color);
 }
@@ -235,13 +271,13 @@
 .out-personal-message-body{
     align-self: flex-end;
 
-    margin-top: 0.5%;
-    margin-right: 0.5%;
+    margin: 0.5% 0.5% 0 50%;
+
     height: max(8%, auto);
 
     padding: 0.2% 0.2% 0.2% 2%;
 
-    border-radius: 500em 0 0 500em;
+    border-radius: 2rem 0 0 2rem;
     border: 2px solid var(--main-color);
     background: var(--green-color);
     color: var(--white-color);
@@ -290,15 +326,23 @@
 }
 
 .exit-button{
+    padding: 0;
     background: none;
     border: none;
     color: var(--dark-color);
-    float: right;
-    margin: 0.5% 4% 0.5% 0.5%;
+}
+
+.info-container{
+    display: flex;
+    justify-content: space-between;
 }
 
 .info{
-    width: 20%;
+    width: 10rem;
     height: 100%;
-    float: right;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
 }
