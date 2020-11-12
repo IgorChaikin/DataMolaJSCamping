@@ -1,0 +1,26 @@
+{
+  "name": "datamolajscamping",
+  "version": "1.0.0",
+  "description": "Tasks for JS-course from DataMola\r (uncomment script path in script section in index.html to check work of some script)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorChaikin/DataMolaJSCamping.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgorChaikin/DataMolaJSCamping/issues"
+  },
+  "homepage": "https://github.com/IgorChaikin/DataMolaJSCamping#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
