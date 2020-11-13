@@ -64,16 +64,12 @@ class MessageList {
             || msg.author === this._user;
         /* only destination user and author can see personal messages for him */
 
-        return this._messages.sort((a, b) => a.createdAt - b.createdAt).slice(skip, skip + top)
-            .filter((msg) => visible(msg)
-                && (
-                    !filterConfig || (
-                        matchAuthor(msg)
-                        && matchText(msg)
-                        && matchFrom(msg)
-                        && matchTo(msg)
-                    )
-                ));
+        return this._messages.filter((msg) => visible(msg) && (!filterConfig || (
+            matchAuthor(msg)
+            && matchText(msg)
+            && matchFrom(msg)
+            && matchTo(msg))
+        )).sort((a, b) => a.createdAt - b.createdAt).slice(skip, skip + top);
     }
 
     get(id) {
@@ -156,7 +152,7 @@ class MessageList {
     }
 
     clear() {
-        this._messages.splice(0, this._messages.length);
+        this._messages = [];
         this._counter = 0;
     }
 }

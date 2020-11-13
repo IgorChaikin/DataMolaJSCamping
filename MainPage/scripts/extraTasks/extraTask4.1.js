@@ -32,7 +32,7 @@ class List {
 
         let end;
 
-        if (typeof i === 'undefined') {
+        if (i === undefined) {
             end = this._lenght - 1;
         } else {
             end = i;

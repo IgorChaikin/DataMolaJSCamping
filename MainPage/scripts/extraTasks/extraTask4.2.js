@@ -1,5 +1,5 @@
 function add(coefficient, argument) {
-    if (typeof argument !== 'undefined') {
+    if (argument !== undefined) {
         return coefficient + argument;
     }
 
@@ -7,7 +7,7 @@ function add(coefficient, argument) {
 }
 
 function sub(coefficient, argument) {
-    if (typeof argument !== 'undefined') {
+    if (argument !== undefined) {
         return coefficient - argument;
     }
 
@@ -15,7 +15,7 @@ function sub(coefficient, argument) {
 }
 
 function mul(coefficient, argument) {
-    if (typeof argument !== 'undefined') {
+    if (argument !== undefined) {
         return coefficient * argument;
     }
 
@@ -23,7 +23,7 @@ function mul(coefficient, argument) {
 }
 
 function div(coefficient, argument) {
-    if (typeof argument !== 'undefined') {
+    if (argument !== undefined) {
         return coefficient / argument;
     }
 
