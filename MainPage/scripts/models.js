@@ -19,6 +19,15 @@ class Message {
     get createdAt() {
         return this._createdAt;
     }
+
+    get createdAtString() {
+        return `${this._createdAt.toDateString() !== new Date().toDateString() ? `${this._createdAt.getDate()}.${
+         this._createdAt.getMonth() + 1}.${
+         this._createdAt.getFullYear()} ` : ' '}
+         
+         ${this._createdAt.getHours().toString().padStart(2, '0')}:${
+         this._createdAt.getMinutes().toString().padStart(2, '0')}`;
+    } /* no date string if createdAt is today */
 }
 
 class MessageList {
@@ -34,6 +43,10 @@ class MessageList {
 
     set user(user) {
         this._user = user;
+    }
+
+    get length() {
+        return this._messages.length;
     }
 
     _isAuthenticated() {
@@ -157,143 +170,19 @@ class MessageList {
     }
 }
 
-/*------------------------------------------------------------------------------------------------*/
+/* ---------------------------------------New UserList class-----------------------------------*/
 
-const m = [
-    new Message('1', 'Привет!', 'Иванов Иван', new Date('2020-10-12T12:00:00'), 'Петров Петр'),
-    new Message('2', 'Как дела?', 'Иванов Иван', new Date('2020-10-12T12:30:00')),
-    new Message('3', 'Привет', 'Петров Петр', new Date('2020-10-12T13:00:00'), 'Иванов Иван'),
-    new Message('4', 'Нормально', new Date('2020-10-12T13:10:00'), 'Петров Петр'),
-    new Message('5', 'А у тебя как?', new Date('2020-10-12T14:00:00'), 'Петров Петр'),
-    new Message('6', 'Хорошо)', 'Иван Иванов', new Date('2020-10-12T14:00:00')),
-];
+class UserList {
+    constructor(users, activeUsers) {
+        this._users = users;
+        this._activeUsers = activeUsers;
+    }
 
-const mL = new MessageList(m);
+    get users() {
+        return this._users;
+    }
 
-console.log('-----getPage-----');
-
-let testList = mL.getPage();
-for (const el of testList) {
-    console.log(el);
-} /* 4: only destination user and author can see personal messages for him */
-
-console.log('--------------');
-
-testList = mL.getPage(0, 3,
-    {
-        dateFrom: new Date('2020-10-12T12:00:00'),
-        dateTo: new Date('2020-10-12T13:00:00'),
-    });
-for (const el of testList) {
-    console.log(el);
-} /* 1: only destination user and author can see personal messages for him */
-
-console.log('--------------');
-
-mL.user = 'Петров Петр';
-
-testList = mL.getPage();
-for (const el of testList) {
-    console.log(el);
-} /* 6 */
-
-console.log('--------------');
-
-testList = mL.getPage(0, 3,
-    {
-        dateFrom: new Date('2020-10-12T12:00:00'),
-        dateTo: new Date('2020-10-12T13:00:00'),
-    }); /* 3 */
-for (const el of testList) {
-    console.log(el);
+    get activeUsers() {
+        return this._activeUsers;
+    }
 }
-
-console.log('-----addAll-----');
-const badMsg = mL.addAll(
-    [
-        new Message('7',
-            'Спасибо, что спросил',
-            'Иванов Иван',
-            new Date('2020-10-12T14:50:00')),
-        new Message('8',
-            'Сегодня хорошая погода',
-            'Петров Петр',
-            new Date('2020-10-12T15:00:00'), 'Иванов Иван'),
-        new Message(9,
-            'Some text',
-            'Петров Петр',
-            new Date('2020-10-12T15:00:00'),
-            'Иванов Иван'),
-        new Message('10',
-            'Some text',
-            new Date('2020-10-12T15:00:00'),
-            'Иванов Иван'),
-    ],
-);
-
-console.log(mL.getPage().length); /* 8: 2 invalid */
-console.log(badMsg);
-
-console.log('-----get-----');
-
-console.log(mL.get('1'));
-console.log(mL.get('6'));
-console.log(mL.get('25'));/* undefined, no message with this id */
-
-console.log('-----validate-----');
-
-console.log(MessageList.validate(new Message(
-    '1',
-    'Text',
-    'Иванов Иван',
-)));/* true */
-
-console.log(MessageList.validate(new Message(
-    1,
-    {},
-    'Иванов Иван',
-)));/* false, wrong types */
-
-console.log(MessageList.validate(new Message(
-    '1',
-    'Text',
-    'Иванов Иван',
-    new Date('2020-10-12T12:00:00'),
-    'Петров Петр',
-    false,
-))); /* false, not personal, but has 'to' */
-
-console.log('-----add-----');
-
-console.log(mL.add({
-    text: {},
-    to: 'Иванов Иван',
-}));/* false, wrong types */
-
-mL.user = undefined;
-console.log(mL.add({
-    text: 'Text',
-    to: 'Иванов Иван',
-}));/* false, only authenticated user can send messages */
-
-mL.user = 'Васильев Василий';
-console.log(mL.add({
-    text: 'Не знаю, не знаю',
-    to: 'Пётр Петров',
-}));/* true */
-
-console.log('-----edit-----');
-
-console.log(mL.edit('1', { text: 'Some text' }));/* false only author can edit his messages */
-console.log(mL.get('1'));
-
-console.log(mL.edit('9', { text: 'Some text' }));/* true */
-console.log(mL.get('9'));
-
-console.log('-----remove-----');
-
-console.log(mL.remove('1'));/* false only author can edit his messages */
-console.log(mL.get('1'));
-
-console.log(mL.remove('9'));/* true */
-console.log(mL.get('9'));/* undefined (was deleted) */
