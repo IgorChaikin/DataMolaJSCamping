@@ -13,7 +13,7 @@
     <header class="header">
         <span>
             <i class="fa fa-book" aria-hidden="true"></i>
-            IghorChaikin
+            <span id = "header-id"></span>
         </span>
         <button class="exit-button">Выйти</button>
     </header>
@@ -21,13 +21,13 @@
     <div class="main">
         <div class="side-area">
             <div class="side-header">Активные пользователи</div>
-            <div class="user-list">
-                <button class="user-point">User1</button>
+            <div class="user-list" id = "active-users-list-id">
+                <!--<button class="user-point">User1</button>
                 <button class="user-point">IgorChaikin</button>
                 <button class="user-point">Some user</button>
                 <button class="user-point">Ivan Ivanon</button>
                 <button class="user-point">No Name</button>
-                <button class="user-point">Julia</button>
+                <button class="user-point">Julia</button>-->
             </div>
         </div>
         <div class="center-area">
@@ -36,8 +36,8 @@
                     Загрузить ещё
                 </button>
             </div>
-            <div class="message-list">
-                <div class="out-message-body">
+            <div class="message-list" id ="messages-list-id">
+                <!--<div class="out-message-body">
                     <h6 class="message-header">
                         IgorChaikin
                     </h6>
@@ -141,13 +141,13 @@
                         Sed ut perspiciatis, unde omnis
                     </article>
                     <p class="date-text">22.10.2020 14:00</p>
-                </div>
+                </div>-->
 
             </div>
 
             <form class="send-form">
                 <input class="send-field">
-                <button type="button" class="send-button">
+                <button type="button" class="send-button" id="send-button">
                     Отправить
                     <i class="fa fa-check" aria-hidden="true"></i>
                 </button>
@@ -185,7 +185,11 @@
         </span>
     </footer>
 </body>
-<script type="text/javascript" src="scripts/classes.js"></script>
+<script type="text/javascript" src="scripts/models.js"></script>
+<script type="text/javascript" src="scripts/views.js"></script>
+<script type="text/javascript" src="scripts/objectsInitialisation.js"></script>
+<script type="text/javascript" src="scripts/globalMethods.js"></script>
+<script type="text/javascript" src="scripts/someTests.js"></script>
 <!--<script type="text/javascript" src="scripts/extraTasks/extraTask4.1.js"></script>-->
 <!--<script type="text/javascript" src="scripts/extraTasks/extraTask4.2.js"></script>-->
 
