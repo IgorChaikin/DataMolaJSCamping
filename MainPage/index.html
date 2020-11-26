@@ -5,12 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="UI/styles.css">
+    <link rel="stylesheet" href="UI/authStyles.css">
     <link rel="stylesheet" href="UI/css/font-awesome.min.css">
     <title>StudentChat</title>
 </head>
 
 <body>
-    <header class="header">
+    <div class="auth-area" id="auth-area-id">
+        <div class="auth-container">
+            <label for="auth-input-id" class="auth-label">Авторизация</label>
+            <input class="auth-input" id="auth-input-id"/>
+            <button class="auth-button">Войти</button>
+            <button class="auth-button">Зарегистрироваться</button>
+        </div>
+    </div>
+    <!--<header class="header" id="header-element-id">
         <span>
             <i class="fa fa-book" aria-hidden="true"></i>
             <span id = "header-id"></span>
@@ -18,156 +27,56 @@
         <button class="exit-button">Выйти</button>
     </header>
 
-    <div class="main">
+    <div class="main" id="main-element-id">
         <div class="side-area">
             <div class="side-header">Активные пользователи</div>
             <div class="user-list" id = "active-users-list-id">
-                <!--<button class="user-point">User1</button>
-                <button class="user-point">IgorChaikin</button>
-                <button class="user-point">Some user</button>
-                <button class="user-point">Ivan Ivanon</button>
-                <button class="user-point">No Name</button>
-                <button class="user-point">Julia</button>-->
+
             </div>
         </div>
         <div class="center-area">
             <div class="load-area">
-                <button type="button" class="sup-button">
+                <button type="button" class="sup-button" id="load-button-id">
                     Загрузить ещё
                 </button>
             </div>
             <div class="message-list" id ="messages-list-id">
-                <!--<div class="out-message-body">
-                    <h6 class="message-header">
-                        IgorChaikin
-                    </h6>
-                    <article class="message-text">
-                        Sed ut perspiciatis, unde omnis
-                    </article>
-                    <button class="redact-button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                    <button class="delete-button"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                    <p class="date-text">22.10.2020 14:00</p>
-                </div>
-
-                <div class="out-personal-message-body">
-                    <h6 class="message-header">
-                        IgorChaikin
-                    </h6>
-                    <article class="message-text">
-                        <span class="out-appeal">User1,</span>
-                        S
-                    </article>
-                    <button class="redact-button"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                    <button class="delete-button"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                    <p class="date-text">22.10.2020 14:00</p>
-                </div>
-
-                <div class="in-message-body">
-                    <h6 class="message-header">
-                        Some user
-                    </h6>
-                    <article class="message-text">
-                        Sed ut perspiciatis, unde omnis
-                    </article>
-                    <p class="date-text">22.10.2020 14:00</p>
-                </div>
-
-                <div class="in-message-body">
-                    <h6 class="message-header">
-                        Some user
-                    </h6>
-                    <article class="message-text">
-                        Sed ut perspiciatis, unde omnis
-                    </article>
-                    <p class="date-text">22.10.2020 14:00</p>
-                </div>
-
-                <div class="in-message-body">
-                    <h6 class="message-header">
-                        Some user
-                    </h6>
-                    <article class="message-text">
-                        Sed ut perspiciatis, unde omnis
-                    </article>
-                    <p class="date-text">22.10.2020 14:00</p>
-                </div>
-
-                <div class="in-message-body">
-                    <h6 class="message-header">
-                        Some user
-                    </h6>
-                    <article class="message-text">
-                        Sed ut perspiciatis, unde omnis
-                    </article>
-                    <p class="date-text">22.10.2020 14:00</p>
-                </div>
-
-                <div class="in-personal-message-body">
-                    <h6 class="message-header">
-                        Some user
-                    </h6>
-                    <article class="message-text">
-                        <span class="in-appeal">IgorChaikin,</span>
-                        S
-                    </article>
-                    <p class="date-text">22.10.2020 14:00</p>
-                </div>
-
-                <div class="in-message-body">
-                    <h6 class="message-header">
-                        Some user
-                    </h6>
-                    <article class="message-text">
-                        Sed ut perspiciatis, unde omnis
-                    </article>
-                    <p class="date-text">22.10.2020 14:00</p>
-                </div>
-
-                <div class="in-message-body">
-                    <h6 class="message-header">
-                        Some user
-                    </h6>
-                    <article class="message-text">
-                        S
-                    </article>
-                    <p class="date-text">22.10.2020 14:00</p>
-                </div>
-
-                <div class="in-message-body">
-                    <h6 class="message-header">
-                        Some user
-                    </h6>
-                    <article class="message-text">
-                        Sed ut perspiciatis, unde omnis
-                    </article>
-                    <p class="date-text">22.10.2020 14:00</p>
-                </div>-->
 
             </div>
 
-            <form class="send-form">
+            <form class="send-form" id="send-form-id">
                 <input class="send-field">
-                <button type="button" class="send-button" id="send-button">
+                <button type="submit" class="send-button" id="send-button">
                     Отправить
                     <i class="fa fa-check" aria-hidden="true"></i>
                 </button>
             </form>
         </div>
+
         <div class="side-area">
             <div class="side-header">Фильтровать сообщения по</div>
-            <div class="filters-grid">
+            <div class="filters-grid" id="filters-id">
                 <label class="name-label" for="name">Автору</label>
                     <input type="text" id="name" class="name-field">
+                <button type="button" class="name-delete-button" id="name-button-id">
+                    <i class="fa fa-times"></i>
+                </button>
                 <label class="date-label" for="date">Дате</label>
                     <input type="date" id="date" class="date-field">
+                <button type="button" class="date-delete-button" id="date-button-id">
+                    <i class="fa fa-times"></i>
+                </button>
                 <label class="content-label" for="content">Содержанию</label>
                     <input type="text" id="content" class="content-field">
+                <button type="button" class="content-delete-button" id="content-button-id">
+                    <i class="fa fa-times"></i>
+                </button>
             </div>
         </div>
 
-    </div>
+    </div>-->
 
-    <footer class="footer">
+    <footer class="footer" id="footer-element-id">
         <span class="message-header">StudentChat</span>
         <span class="info-container">
             <div class="info">
@@ -185,12 +94,8 @@
         </span>
     </footer>
 </body>
-<script type="text/javascript" src="scripts/models.js"></script>
-<script type="text/javascript" src="scripts/views.js"></script>
-<script type="text/javascript" src="scripts/objectsInitialisation.js"></script>
-<script type="text/javascript" src="scripts/globalMethods.js"></script>
-<script type="text/javascript" src="scripts/someTests.js"></script>
-<!--<script type="text/javascript" src="scripts/extraTasks/extraTask4.1.js"></script>-->
-<!--<script type="text/javascript" src="scripts/extraTasks/extraTask4.2.js"></script>-->
-
+<script defer type="text/javascript" src="scripts/MVC/models.js"></script>
+<script defer type="text/javascript" src="scripts/MVC/views.js"></script>
+<script defer type="text/javascript" src="scripts/objectsInitialisation.js"></script>
+<script defer type="text/javascript" src="scripts/MVC/controllers.js"></script>
 </html>
