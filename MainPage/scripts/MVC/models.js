@@ -3,7 +3,9 @@ class Message {
         this.text = text;
         this._author = author;
         this._id = id;
-        this._createdAt = createdAt ?? new Date();
+        this._createdAt = typeof createdAt === 'string' ? new Date(createdAt)
+            : createdAt instanceof Date ? createdAt
+                : new Date();
         this.to = to;
         this.isPersonal = isPersonal ?? !!to;
     }
@@ -28,6 +30,13 @@ class Message {
          ${this._createdAt.getHours().toString().padStart(2, '0')}:${
          this._createdAt.getMinutes().toString().padStart(2, '0')}`;
     } /* no date string if createdAt is today */
+
+    get createdAtFormatString() {
+        return `${this._createdAt.getFullYear()}-${this._createdAt.getMonth() + 1}-${this._createdAt.getDate()}T${
+            this._createdAt.getHours().toString().padStart(2, '0')}:${
+            this._createdAt.getMinutes().toString().padStart(2, '0')}:${
+            this._createdAt.getSeconds().toString().padStart(2, '0')}`;
+    }
 }
 
 class MessageList {
@@ -67,7 +76,7 @@ class MessageList {
             );/* both parameters (isPersonal & to) should exist in personal message */
     }
 
-    getPage(skip = 0, top = 10, filterConfig) {
+    getPage(count = 10, filterConfig) {
         const matchAuthor = (msg) => !filterConfig.author
             || msg.author.indexOf(filterConfig.author) !== -1;
         const matchText = (msg) => !filterConfig.text || msg.text.indexOf(filterConfig.text) !== -1;
@@ -82,7 +91,7 @@ class MessageList {
             && matchText(msg)
             && matchFrom(msg)
             && matchTo(msg))
-        )).sort((a, b) => a.createdAt - b.createdAt).slice(skip, skip + top);
+        )).sort((a, b) => a.createdAt - b.createdAt).slice(-count);
     }
 
     get(id) {
@@ -167,6 +176,17 @@ class MessageList {
     clear() {
         this._messages = [];
         this._counter = 0;
+    }
+
+    toJSON() {
+        return JSON.stringify(this._messages.map((msg) => ({
+            id: msg.id,
+            text: msg.text,
+            createdAt: msg.createdAtFormatString,
+            author: msg.author,
+            isPersonal: msg.isPersonal,
+            to: msg.to,
+        })));
     }
 }
 

@@ -95,7 +95,7 @@ body{
     background: var(--green-color);
     color: var(--white-color);
     border: none;
-    box-shadow: 0 0.2rem 0.5rem var(--dark-color);;
+    box-shadow: 0 0.2rem 0.5rem var(--dark-color);
 }
 
 .side-area{
@@ -118,7 +118,7 @@ body{
     display: grid;
     height: 88%;
     grid-template-rows: 0 2% 5% 2% 5% 2% 5%;
-    grid-template-columns: 0 90%;
+    grid-template-columns: 0 75% 10%;
     grid-gap: 5%;
 }
 
@@ -142,6 +142,15 @@ body{
     color: var(--dark-color);
 }
 
+.name-delete-button{
+    grid-row: 3;
+    grid-column: 3;
+    background: none;
+    border: none;
+    color: var(--white-color);
+    font: var(--header);
+}
+
 .date-label{
     grid-row: 4;
     grid-column: 2;
@@ -160,6 +169,15 @@ body{
     border: none;
     font: var(--text);
     color: var(--dark-color);
+}
+
+.date-delete-button{
+    grid-row: 5;
+    grid-column: 3;
+    background: none;
+    border: none;
+    color: var(--white-color);
+    font: var(--header);
 }
 
 .content-label{
@@ -183,6 +201,15 @@ body{
     color: var(--dark-color);
 }
 
+.content-delete-button{
+    grid-row: 7;
+    grid-column: 3;
+    background: none;
+    border: none;
+    color: var(--white-color);
+    font: var(--header);
+}
+
 .user-list{
     width: 100%;
     height: 88%;
@@ -198,6 +225,10 @@ body{
     font: var(--header);
 }
 
+.selected{
+    background: linear-gradient(to top,transparent -30%,var(--green-color));
+}
+
 .load-area{
     height: 3%;
     display: flex;
@@ -209,7 +240,7 @@ body{
 }
 
 .sup-button{
-    border-radius: 1rem;;
+    border-radius: 1rem;
     background: var(--main-color);
     color: var(--white-color);
     border: none;
