@@ -13,10 +13,12 @@
 <body>
     <div class="auth-area" id="auth-area-id">
         <div class="auth-container">
-            <label for="auth-input-id" class="auth-label">Авторизация</label>
-            <input class="auth-input" id="auth-input-id"/>
-            <button class="auth-button">Войти</button>
-            <button class="auth-button">Зарегистрироваться</button>
+            <form class = "auth-form" id="auth-form-id" >
+                <label for="auth-input-id" class="auth-label" id="auth-label-id">Авторизация</label>
+                <input class="auth-input" id="auth-input-id"/>
+                <button type="submit" class="auth-button" id="auth-button-id">Зарегистрироваться</button>
+            </form>
+            <button type="button" class="change-button" id="change-button-id">Войти</button>
         </div>
     </div>
     <!--<header class="header" id="header-element-id">
@@ -74,7 +76,7 @@
             </div>
         </div>
 
-    </div>-->
+    </div> -->
 
     <footer class="footer" id="footer-element-id">
         <span class="message-header">StudentChat</span>
@@ -89,7 +91,7 @@
             </div>
             <div class="info">
                 <div class="message-header">Дата измениния</div>
-                <div class="message-text">22.10.2020</div>
+                <div class="message-text">03.12.2020</div>
             </div>
         </span>
     </footer>
@@ -97,5 +99,6 @@
 <script defer type="text/javascript" src="scripts/MVC/models.js"></script>
 <script defer type="text/javascript" src="scripts/MVC/views.js"></script>
 <script defer type="text/javascript" src="scripts/objectsInitialisation.js"></script>
-<script defer type="text/javascript" src="scripts/MVC/controllers.js"></script>
+<script defer type="text/javascript" src="scripts/MVC/chatControllers.js"></script>
+<script defer type="text/javascript" src="scripts/MVC/authControllers.js"></script>
 </html>
