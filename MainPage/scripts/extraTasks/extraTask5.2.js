@@ -46,4 +46,4 @@ list = [
     },
 ];
 
-element.innerHTML = createList(list, 14);
+element.innerHTML = createList(list, 14, 'List');

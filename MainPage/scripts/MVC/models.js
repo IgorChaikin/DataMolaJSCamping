@@ -32,7 +32,9 @@ class Message {
     } /* no date string if createdAt is today */
 
     get createdAtFormatString() {
-        return `${this._createdAt.getFullYear()}-${this._createdAt.getMonth() + 1}-${this._createdAt.getDate()}T${
+        return `${this._createdAt.getFullYear()}-${
+            (this._createdAt.getMonth() + 1).toString().padStart(2, '0')}-${
+            this._createdAt.getDate().toString().padStart(2, '0')}T${
             this._createdAt.getHours().toString().padStart(2, '0')}:${
             this._createdAt.getMinutes().toString().padStart(2, '0')}:${
             this._createdAt.getSeconds().toString().padStart(2, '0')}`;
@@ -196,6 +198,23 @@ class UserList {
     constructor(users, activeUsers) {
         this._users = users;
         this._activeUsers = activeUsers;
+    }
+
+    addActive(user) {
+        if (this._activeUsers.indexOf(user) === -1) {
+            this._activeUsers.push(user);
+        }
+    }
+
+    add(user) {
+        if (this._users.indexOf(user) === -1) {
+            this._users.push(user);
+        }
+        this.addActive(user);
+    }
+
+    in(user) {
+        return this._users.indexOf(user) !== -1;
     }
 
     get users() {

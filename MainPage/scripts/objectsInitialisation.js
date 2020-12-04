@@ -15,11 +15,6 @@ if (!localStorage.getItem('users')) {
                     'Сидоров Сидр']));
 }
 
-if (!localStorage.getItem('currentUser')) {
-        localStorage.setItem('currentUser', JSON.stringify('Петров Петр'));
-}
-/* This should be released by authentication page.. sorry, next time :) */
-
 const msgs = [
         {
                 id: '0',
@@ -173,4 +168,3 @@ const msgs = [
 if (!localStorage.getItem('msgs')) {
         localStorage.setItem('msgs', JSON.stringify(msgs));
 }
-localStorage.setItem('currentUser', JSON.stringify('Петров Петр'));

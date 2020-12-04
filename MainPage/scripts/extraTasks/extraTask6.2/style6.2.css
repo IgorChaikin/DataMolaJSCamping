@@ -1,0 +1,7 @@
+.play-table {
+    width: 10rem;
+    height: 10rem;
+    table-layout: fixed;
+    overflow: hidden;
+    text-align: center
+}
