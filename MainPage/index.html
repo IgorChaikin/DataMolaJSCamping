@@ -7,20 +7,33 @@
     <link rel="stylesheet" href="UI/styles.css">
     <link rel="stylesheet" href="UI/authStyles.css">
     <link rel="stylesheet" href="UI/css/font-awesome.min.css">
+    <link rel="stylesheet" href="UI/errStyles.css">
     <title>StudentChat</title>
 </head>
 
 <body>
     <div class="auth-area" id="auth-area-id">
         <div class="auth-container">
-            <form class = "auth-form" id="auth-form-id" >
-                <label for="auth-input-id" class="auth-label" id="auth-label-id">Авторизация</label>
-                <input class="auth-input" id="auth-input-id"/>
+            <form method="post" class = "auth-form" id="auth-form-id">
+                <label class="auth-label" id="auth-label-id">Авторизация</label>
+                <label for="auth-input-id" class="input-label">Имя пользователя</label>
+                <input name="name" class="auth-input" id="auth-input-id"/>
+
+                <label for="pass-input-id" class="input-label">Пароль</label>
+                <input type="password" name="pass" class="auth-input" id="pass-input-id"/>
                 <button type="submit" class="auth-button" id="auth-button-id">Зарегистрироваться</button>
             </form>
             <button type="button" class="change-button" id="change-button-id">Войти</button>
         </div>
     </div>
+
+    <!--<div class="err-area">
+        <div class="err-body">
+            <label class="err-label">Error</label>
+            <div class="err-desc">Error Error Error Error Error</div>
+        </div>
+    </div>-->
+
     <!--<header class="header" id="header-element-id">
         <span>
             <i class="fa fa-book" aria-hidden="true"></i>
@@ -98,7 +111,8 @@
 </body>
 <script defer type="text/javascript" src="scripts/MVC/models.js"></script>
 <script defer type="text/javascript" src="scripts/MVC/views.js"></script>
-<script defer type="text/javascript" src="scripts/objectsInitialisation.js"></script>
+<script defer type="text/javascript" src="scripts/ChatApiService.js"></script>
 <script defer type="text/javascript" src="scripts/MVC/chatControllers.js"></script>
 <script defer type="text/javascript" src="scripts/MVC/authControllers.js"></script>
+<script defer type="text/javascript" src="scripts/objectsInitialisation.js"></script>
 </html>

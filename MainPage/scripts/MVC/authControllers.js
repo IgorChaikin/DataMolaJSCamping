@@ -7,12 +7,10 @@ class AuthController {
         this._button = document.getElementById(buttonId);
         this._change = document.getElementById(changeId);
 
-        this._userList = new UserList(JSON.parse(localStorage.getItem('users')),
-            JSON.parse(localStorage.getItem('activeUsers')));
         this._mode = 'register';
     }
 
-    _update() {
+    _update(user) {
         const body = this._area.parentNode;
         body.removeChild(this._area);
 
@@ -23,7 +21,7 @@ class AuthController {
             + '            <i class="fa fa-book" aria-hidden="true"></i>\n'
             + '            <span id = "header-id"></span>\n'
             + '        </span>\n'
-            + '        <button class="exit-button">Выйти</button>';
+            + '        <button class="exit-button" id="exit-id">Выйти</button>';
 
         body.insertBefore(header, this._footer);
 
@@ -78,14 +76,17 @@ class AuthController {
 
         body.insertBefore(main, this._footer);
 
-        const chatController = new ChatController('messages-list-id',
+        const chatController = new ChatController(
+            user,
+            'messages-list-id',
             'header-id',
             'active-users-list-id',
             'name',
             'date',
             'content',
             'load-button-id',
-            'send-form-id');
+            'send-form-id',
+        );
         /* -----------------------------------DOM components-----------------------------------*/
         const usersList = document.getElementById('active-users-list-id');
 
@@ -98,49 +99,40 @@ class AuthController {
         const nameButton = document.getElementById('name-button-id');
         const dateButton = document.getElementById('date-button-id');
         const contentButton = document.getElementById('content-button-id');
+
+        const exitButton = document.getElementById('exit-id');
         /* -----------------------------------Assign events-----------------------------------*/
 
         loadButton.addEventListener('click', chatController.loadButtonController);
-        messages.addEventListener('click', chatController.editListController);
+        // messages.addEventListener('click', chatController.editListController);
         sendForm.addEventListener('submit', chatController.send);
         filters.addEventListener('input', chatController.filterChangeController);
         nameButton.addEventListener('click', chatController.deleteNameController);
         dateButton.addEventListener('click', chatController.deleteDateController);
         contentButton.addEventListener('click', chatController.deleteContentController);
         usersList.addEventListener('click', chatController.selectUser);
-
-        /* ---------------------------------Begin screen state---------------------------------*/
-
-        chatController.activeUsersView.display(chatController.userList.activeUsers,
-            chatController.messageList.user);
-
-        chatController.messagesView.display(chatController.messageList.getPage(),
-            chatController.messageList.user);
-
-        chatController.headerView.display(chatController.messageList.user);
+        exitButton.addEventListener('click', chatController.exitController);
     }
 
-    _register(user) {
-        if (this._userList.in(user)) {
-            this._authLabel.innerText = 'Такой пользователь уже есть';
-        } else {
-            this._userList.add(user);
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            localStorage.setItem('activeUsers', JSON.stringify(this._userList.activeUsers));
-            localStorage.setItem('users', JSON.stringify(this._userList.users));
-            this._update();
-        }
+    _register(event) {
+        chatApi.register(event).then((res) => {
+            if (res.status === 200) {
+                this._authLabel.innerText = 'Регистрация прошла успешно, войдите';
+            } else {
+                this._authLabel.innerText = 'Неверные данные пользователя';
+            }
+        });
     }
 
-    _login(user) {
-        if (!this._userList.in(user)) {
-            this._authLabel.innerText = 'Неверно указан пользователь';
-        } else {
-            this._userList.addActive(user);
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            localStorage.setItem('activeUsers', JSON.stringify(this._userList.activeUsers));
-            this._update();
-        }
+    _login(event) {
+        chatApi.login(event).then((res) => {
+            if (res.status === 200) {
+                this._update(this._authInput.value);
+            } else {
+                this._authLabel.innerText = 'Неверные данные пользователя';
+            }
+            return res.json();
+        }).then((data) => { chatApi.token = data.token; }).catch(console.error);
     }
 
     get authenticate() {
@@ -149,8 +141,8 @@ class AuthController {
             if (event.target.closest('form')) {
                 const user = this._authInput.value;
                 switch (this._mode) {
-                    case 'register': this._register(user); break;
-                    case 'login': this._login(user); break;
+                    case 'register': this._register(event); break;
+                    case 'login': this._login(event); break;
                     default: break;
                 }
             } else {

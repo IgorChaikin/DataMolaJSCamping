@@ -33,9 +33,15 @@ class MessagesView {
                     <!-- delete and edit buttons enable only for author of this message -->
                     
                     <p class="date-text">
-                        ${item.createdAtString}
+                        
+                        ${new Date(item.createdAt).getFullYear()}-${
+                        (new Date(item.createdAt).getMonth() + 1).toString().padStart(2, '0')}-${
+                        new Date(item.createdAt).getDate().toString().padStart(2, '0')} ${
+                        new Date(item.createdAt).getHours().toString().padStart(2, '0')}:${
+                        new Date(item.createdAt).getMinutes().toString().padStart(2, '0')}
+                        
                     </p>
-                </div>`).join('\n');
+                </div>`).reverse().join('\n');
     }
 }
 

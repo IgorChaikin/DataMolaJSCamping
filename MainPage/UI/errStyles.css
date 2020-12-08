@@ -1,0 +1,33 @@
+.err-area{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(to top, var(--light-color), var(--white-color));
+}
+
+.err-body{
+    height: 60%;
+    width: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+    border-radius: 8rem 8rem 8rem 8rem;
+    background: var(--white-color);
+    color: var(--white-color);
+}
+
+.err-label{
+    font: var(--bold-header);
+    color: var(--dark-color);
+}
+
+.err-desc{
+    font: var(--text);
+    color: var(--dark-color);
+}
