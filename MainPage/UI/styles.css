@@ -217,7 +217,7 @@ body{
 }
 
 .user-point{
-    height: 12%;
+    height: 2rem;
     width: 100%;
     background: linear-gradient(to top,transparent -30%,var(--light-color));
     border: none;
