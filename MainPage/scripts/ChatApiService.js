@@ -68,6 +68,16 @@ class ChatApiService {
             body: JSON.stringify(msg),
             headers: this._getHeaders(),
         });
+
+        return result;
+    }
+
+    delete(id) {
+        const result = fetch(`${this._prefix}messages/${id}`, {
+            method: 'DELETE',
+            headers: this._getHeaders(),
+        });
+
         return result;
     }
 
@@ -93,35 +103,10 @@ class ChatApiService {
         return result;
     }
 
-    logout(footerId) {
+    logout(view) {
         fetch(`${this._prefix}auth/logout`, {
             method: 'POST',
             headers: this._getHeaders(),
-        }).then(() => {
-            const footer = document.getElementById(footerId);
-            const element = footer.parentNode;
-            const header = document.getElementById('header-element-id');
-            element.removeChild(header);
-            const main = document.getElementById('main-element-id');
-            element.removeChild(main);
-
-            const area = document.createElement('div');
-            area.className = 'auth-area';
-            area.setAttribute('id', 'auth-area-id');
-            area.innerHTML = '<div class="auth-container">\n'
-                + '            <form method="post" class = "auth-form" id="auth-form-id">\n'
-                + '                <label class="auth-label" id="auth-label-id">Авторизация</label>\n'
-                + '                <label for="auth-input-id" class="input-label">Имя пользователя</label>\n'
-                + '                <input name="name" class="auth-input" id="auth-input-id"/>\n'
-                + '\n'
-                + '                <label for="pass-input-id" class="input-label">Пароль</label>\n'
-                + '                <input type="password" name="pass" class="auth-input" id="pass-input-id"/>\n'
-                + '                <button type="submit" class="auth-button" id="auth-button-id">Зарегистрироваться</button>\n'
-                + '            </form>\n'
-                + '            <button type="button" class="change-button" id="change-button-id">Войти</button>\n'
-                + '        </div>';
-
-            element.insertBefore(area, footer);
-        }).catch(console.error);
+        }).then(() => { view.display(); }).catch(console.error);
     }
 }

@@ -152,44 +152,41 @@ class ChatController {
          };
     }
 
-     // get editListController() {
-         // return (event) => {
-             // if (event.target.closest('button')) {
-                 // const parentId = event.target.tagName === 'BUTTON'
-                     // ? event.target.parentElement.id : event.target.parentElement
-                        // .parentElement.id;
-                 // const thisId = event.target.tagName === 'BUTTON'
-                     // ? event.target.id : event.target.parentElement.id;
+      get editListController() {
+          return (event) => {
+              if (event.target.closest('button')) {
+                  const parentId = event.target.tagName === 'BUTTON'
+                      ? event.target.parentElement.id : event.target.parentElement
+                         .parentElement.id;
+                  const thisId = event.target.tagName === 'BUTTON'
+                      ? event.target.id : event.target.parentElement.id;
                  /* attempt to fix bug with i-tag (ico) */
 
-                 // switch (thisId) {
-                     // case 'delete-id':
-                         // this._messageList.remove(parentId);
-                         // localStorage.setItem('msgs', this._messageList.toJSON());
-                         // this._messagesView
-                             // .display(this._messageList
-                                 // .getPage(this._pageCount), this._messageList.user);
-                         // break;
-                     // case 'edit-id':
-                         // this._sendForm.querySelector('input').value = this
-                            // ._messageList.get(parentId).text;
-                         // this._editId = parentId;
-                         // break;
-                     // default:
-                         // break;
-                 // }
-             // } else {
-                 // event.stopPropagation();
-             // }
-         // };
-    // }
+                  switch (thisId) {
+                      case 'delete-id':
+                          chatApi.delete(parentId)
+                              .then(() => { this._page(); }).catch(console.error);
+                          break;
+                      /* case 'edit-id':
+                          this._sendForm.querySelector('input').value = this
+                             ._messageList.get(parentId).text;
+                          this._editId = parentId;
+                          break; */
+                      default:
+                          break;
+                  }
+              } else {
+                  event.stopPropagation();
+              }
+          };
+     }
 
     get exitController() {
         return (event) => {
             if (event.target.closest('button')) {
                 clearInterval(this._refresh);
                 clearInterval(this._userRefresh);
-                chatApi.logout('footer-element-id');
+                chatApi.logout(new AuthView('footer-element-id'));
             } else {
                 event.stopPropagation();
             }

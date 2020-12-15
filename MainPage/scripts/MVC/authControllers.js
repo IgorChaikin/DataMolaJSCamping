@@ -104,7 +104,7 @@ class AuthController {
         /* -----------------------------------Assign events-----------------------------------*/
 
         loadButton.addEventListener('click', chatController.loadButtonController);
-        // messages.addEventListener('click', chatController.editListController);
+        messages.addEventListener('click', chatController.editListController);
         sendForm.addEventListener('submit', chatController.send);
         filters.addEventListener('input', chatController.filterChangeController);
         nameButton.addEventListener('click', chatController.deleteNameController);
@@ -121,7 +121,7 @@ class AuthController {
             } else {
                 this._authLabel.innerText = 'Неверные данные пользователя';
             }
-        });
+        }).catch((err) => { console.log(err.json()); }); /* TO DO !!! */
     }
 
     _login(event) {
@@ -132,7 +132,7 @@ class AuthController {
                 this._authLabel.innerText = 'Неверные данные пользователя';
             }
             return res.json();
-        }).then((data) => { chatApi.token = data.token; }).catch(console.error);
+        }).then((data) => { chatApi.token = data.token; });
     }
 
     get authenticate() {
